@@ -7,12 +7,142 @@
     tools:context=".MainActivity">
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
+        android:id="@+id/fondoMenu"
+        android:layout_width="410dp"
+        android:layout_height="900dp"
+        android:layout_marginBottom="60dp"
+        android:background="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textViewProductos"
+        android:layout_width="168dp"
+        android:layout_height="52dp"
+        android:text="@string/prueba_mensaje"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textColor="#E91E63"
+        app:layout_constraintBottom_toTopOf="@+id/ButtonChoquis"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.485"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textViewSaldo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/saldo"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textColor="#2E7D32"
+        app:layout_constraintBottom_toTopOf="@+id/textViewProductos"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textViewProductos"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/ButtonAlmuercito"
+        android:layout_width="138dp"
+        android:layout_height="134dp"
+        android:background="#FFFFFF"
+        android:contentDescription="@string/imagenes_boton"
+        android:scaleType="fitStart"
+        app:layout_constraintBottom_toBottomOf="@+id/ButtonChoquis"
+        app:layout_constraintEnd_toStartOf="@+id/ButtonChoquis"
+        app:layout_constraintHorizontal_bias="0.218"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/ButtonChoquis"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/botonalmuercito1"
+        tools:ignore="DuplicateSpeakableTextCheck" />
+
+    <ImageButton
+        android:id="@+id/ButtonChoquis"
+        android:layout_width="138dp"
+        android:layout_height="134dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="92dp"
+        android:layout_marginEnd="24dp"
+        android:background="#FFFFFF"
+        android:contentDescription="@string/imagenes_boton"
+        android:scaleType="fitStart"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/ButtonAlmuercito"
+        app:layout_constraintTop_toBottomOf="@+id/textViewProductos"
+        app:srcCompat="@drawable/botonchokis1" />
+
+    <ImageButton
+        android:id="@+id/ButtonQuimbayas"
+        android:layout_width="138dp"
+        android:layout_height="134dp"
+        android:background="#FFFFFF"
+        android:contentDescription="@string/imagenes_boton"
+        android:scaleType="fitStart"
+        app:layout_constraintBottom_toTopOf="@+id/FondoMenu"
+        app:layout_constraintEnd_toStartOf="@+id/ButtonJet"
+        app:layout_constraintHorizontal_bias="0.397"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ButtonChoquis"
+        app:layout_constraintVertical_bias="0.461"
+        app:srcCompat="@drawable/botonquimbayas1" />
+
+    <ImageButton
+        android:id="@+id/ButtonJet"
+        android:layout_width="169dp"
+        android:layout_height="102dp"
+        android:background="#FFFFFF"
+        android:contentDescription="@string/imagenes_boton"
+        android:scaleType="fitStart"
+        app:layout_constraintBottom_toTopOf="@+id/FondoMenu"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.518"
+        app:layout_constraintStart_toEndOf="@+id/ButtonAlmuercito"
+        app:layout_constraintTop_toBottomOf="@+id/ButtonChoquis"
+        app:srcCompat="@drawable/botonjet1" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="4dp"
+        android:contentDescription="@string/boton"
+        android:text="Button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/boton"
+        android:text="Button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/button3"
+        app:layout_constraintStart_toEndOf="@+id/button"
+        app:layout_constraintTop_toTopOf="@+id/button3"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="4dp"
+        android:contentDescription="@string/boton"
+        android:text="Button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/FondoMenu"
+        android:layout_width="410dp"
+        android:layout_height="70dp"
+        android:layout_marginBottom="4dp"
+        android:background="#FFEB3B"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
