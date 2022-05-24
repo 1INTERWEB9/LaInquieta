@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">La Inquieta</string>
+    <string name="strMensaje">Mensaje</string>
+    <string name="prueba_mensaje">Productos</string>
+    <string name="saldo">Saldo</string>
+    <string name="imagenes_boton">Imagen</string>
+    <string name="boton">Boton</string>
+    <string name="dispositivos_vinculados">DISPOSITIVOS VINCULADOS</string>
 </resources>
