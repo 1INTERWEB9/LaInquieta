@@ -12,6 +12,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.Handler;
+import android.text.style.BackgroundColorSpan;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -45,9 +46,52 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         bluetoothIn = new Handler() {
+            @SuppressLint("HandlerLeak")
             public void handleMessage(android.os.Message msg) {
                 if (msg.what == handlerState) {
-                    //Interacción con los datos de ingreso
+
+                    String aux = " ";
+                    char aux2=' ';
+                    String data = "";
+
+
+                    aux = String.valueOf(msg.obj);
+
+
+
+                    for(int i=0 ; i<aux.length() ; i++)
+                    {
+                        aux2=aux.charAt(i);
+
+
+
+                        if(aux2=='*')
+                        {
+                            data = String.valueOf(aux2);
+                        }
+                        else
+                        {
+                            System.out.print(data);
+                        }
+                    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                        //dato = dato.replaceAll("\\s+", "");
+
+
+
                 }
             }
         };
@@ -75,8 +119,9 @@ public class MainActivity extends AppCompatActivity {
 
         ButtonChoquis.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-
+            public void onClick(View view)
+            {
+              MyConexionBT.write("Choquis.");
             }
         });
 
