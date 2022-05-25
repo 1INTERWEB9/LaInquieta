@@ -21,12 +21,13 @@
         android:id="@+id/textViewProductos"
         android:layout_width="168dp"
         android:layout_height="52dp"
+        android:layout_marginTop="60dp"
         android:text="@string/prueba_mensaje"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         android:textColor="#E91E63"
         app:layout_constraintBottom_toTopOf="@+id/ButtonChoquis"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.485"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -37,10 +38,13 @@
         android:text="@string/saldo"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         android:textColor="#2E7D32"
+        android:textSize="30sp"
         app:layout_constraintBottom_toTopOf="@+id/textViewProductos"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.575"
         app:layout_constraintStart_toEndOf="@+id/textViewProductos"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
     <ImageButton
         android:id="@+id/ButtonAlmuercito"
@@ -63,7 +67,7 @@
         android:layout_width="138dp"
         android:layout_height="134dp"
         android:layout_marginStart="12dp"
-        android:layout_marginTop="92dp"
+        android:layout_marginTop="88dp"
         android:layout_marginEnd="24dp"
         android:background="#FFFFFF"
         android:contentDescription="@string/imagenes_boton"

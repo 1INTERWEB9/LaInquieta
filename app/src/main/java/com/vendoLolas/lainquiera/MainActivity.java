@@ -39,7 +39,14 @@ public class MainActivity extends AppCompatActivity {
     // String para la direccion MAC
     private static String address = null;
     //-------------------------------------------
-
+    private boolean nick=true;
+    private boolean money=true;
+    private String producto = "";
+    private int precio = 0;
+    private String usuario = "";
+    private String clave = "";
+    private String aux = "";
+    private char aux2=' ';
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,42 +57,62 @@ public class MainActivity extends AppCompatActivity {
             public void handleMessage(android.os.Message msg) {
                 if (msg.what == handlerState) {
 
-                    String aux = " ";
-                    char aux2=' ';
-                    String usuario = "";
-                    String clave = "";
-                    boolean nick=false;
 
 
-                    aux = String.valueOf(msg.obj);
+                    aux2=(char) msg.obj;
 
-                    //System.out.print(aux);
 
-                    for(int i=0 ; i<aux.length() ; i++)
+                    if(aux2 == '\n')
                     {
-                        aux2=aux.charAt(i);
+                        aux="";
+                        nick=false;
+                        money=false;
 
-
-
-                        if(aux2=='{')
-                        {
-                            nick = true;
-
-                        }
-
-                        if(aux2==',')
-                        {
-                            nick = false;
-
-                        }
-
-                        if(nick==true)
-                        {
-                            usuario=String.valueOf(aux2);
-                        }
                     }
 
-                    System.out.print(aux2);
+                    if(aux2 == '!')
+                    {
+                        producto="";
+                        nick=true;
+                    }
+
+                    if(aux2 == '$')
+                    {
+                        precio=0;
+                        money=true;
+                    }
+
+
+
+                    if(nick == true)
+                    {
+                        if(aux2 != '\n')
+                            {
+                                producto = producto.concat(Character.toString(aux2));
+                                producto = producto.replaceAll("!", "");
+                                producto = producto.replaceAll("\\s+", "");
+                                System.out.println(producto.length());
+                                System.out.println(producto);
+                            }
+
+                    }
+
+                    if(money == true)
+                    {
+                        if(aux2 != '\n')
+                            {
+                                aux = aux.concat(Character.toString(aux2));
+                                aux = aux.replaceAll("$", "");
+                                aux = aux.replaceAll("\\s+", "");
+                                System.out.println(aux.length());
+                                System.out.println(aux);
+                            }
+
+                    }
+
+
+
+
 
 
 
