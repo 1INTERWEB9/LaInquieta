@@ -74,7 +74,7 @@ public class DispositivosVinculados extends AppCompatActivity
             finishAffinity();
 
             // Realiza un intent para iniciar la siguiente actividad
-            Intent intend = new Intent(DispositivosVinculados.this, MainActivity.class);
+            Intent intend = new Intent(DispositivosVinculados.this, InicioSesion.class);
             intend.putExtra(EXTRA_DEVICE_ADDRESS, address);
             startActivity(intend);
         }

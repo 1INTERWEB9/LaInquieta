@@ -6,4 +6,7 @@
     <string name="imagenes_boton">Imagen</string>
     <string name="boton">Boton</string>
     <string name="dispositivos_vinculados">DISPOSITIVOS VINCULADOS</string>
+    <string name="textview">TextView</string>
+    <string name="star_fox_ha_tenido_varios_cap_tulos_en_nintendo_desde_revolucionario_hasta_a_dejar_que_desear_las_aventuras_de_fox_mccloud_y_sus_amigos_han_tenido_algunos_tropiezos_desde_star_fox_zero_en_2016_no_hemos_tenido_ni_una_noticia_de_alg_n_juego_nuevo_remake_o_nada_por_el_estilo_qu_diablos_pas_con_star_fox">Star Fox ha tenido varios capítulos en Nintendo, desde revolucionario hasta a dejar que desear. Las aventuras de Fox McCloud y sus amigos han tenido algunos tropiezos, desde Star Fox Zero en 2016 no hemos tenido ni una noticia de algún juego nuevo, remake o nada por el estilo ¿Qué Diablos pasó con Star Fox?</string>
+    <string name="button">Button</string>
 </resources>

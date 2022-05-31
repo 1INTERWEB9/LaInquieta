@@ -19,12 +19,14 @@
 
     <TextView
         android:id="@+id/textViewProductos"
-        android:layout_width="168dp"
-        android:layout_height="52dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginTop="60dp"
         android:text="@string/prueba_mensaje"
+        android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         android:textColor="#E91E63"
+        android:textSize="56sp"
         app:layout_constraintBottom_toTopOf="@+id/ButtonChoquis"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
@@ -41,8 +43,7 @@
         android:textSize="30sp"
         app:layout_constraintBottom_toTopOf="@+id/textViewProductos"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.575"
-        app:layout_constraintStart_toEndOf="@+id/textViewProductos"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
 
@@ -92,6 +93,16 @@
         app:layout_constraintVertical_bias="0.461"
         app:srcCompat="@drawable/botonquimbayas1" />
 
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="4dp"
+        android:contentDescription="@string/boton"
+        android:text="Button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
     <ImageButton
         android:id="@+id/ButtonJet"
         android:layout_width="169dp"
@@ -105,16 +116,6 @@
         app:layout_constraintStart_toEndOf="@+id/ButtonAlmuercito"
         app:layout_constraintTop_toBottomOf="@+id/ButtonChoquis"
         app:srcCompat="@drawable/botonjet1" />
-
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="4dp"
-        android:contentDescription="@string/boton"
-        android:text="Button"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/button2"

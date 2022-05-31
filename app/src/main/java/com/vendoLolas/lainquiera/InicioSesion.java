@@ -14,6 +14,8 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.text.style.BackgroundColorSpan;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -21,16 +23,15 @@ import android.widget.Toast;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.util.StringTokenizer;
 import java.util.UUID;
 
-public class MainActivity extends AppCompatActivity {
-    ImageButton ButtonAlmuercito, ButtonChoquis, ButtonQuimbayas, ButtonJet;
-    TextView textViewProductos, textViewSaldo, FondoMenu;
 
-    public static String PRODUCTO_ENVIO = "producto_envio";
-    public static String CUENTA_ENVIO = "cuenta_envio";
+public class InicioSesion extends AppCompatActivity
+{
+    Button buttonIngreso, buttonRegistro;
+    EditText editTextUsuario, editTextContra;
     public static String EXTRA_DEVICE_ADDRESS = "device_address";
+    public static String CUENTA_ENVIO = "cuenta_envio";
     //-------------------------------------------
     Handler bluetoothIn;
     final int handlerState = 0;
@@ -42,36 +43,30 @@ public class MainActivity extends AppCompatActivity {
     private static final UUID BTMODULEUUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
     // String para la direccion MAC
     private static String address = null;
-    private static String cuenta = null;
     //-------------------------------------------
-
     private boolean nick=false;
+    private boolean contra=false;
     private boolean money=false;
-    private boolean tanto=false;
-    private boolean es = false;
-    protected String productoNombre = "";
-    protected int precio = 0;
-    protected int cantidad=0;
-    protected String descripcion = "";
-    private String aux = "";
-    private String aux3 = "";
-    private char aux2=' ';
 
     private String usuario = "";
     private String clave = "";
-    private String saldo = "";
-    private String saltos = "";
+    private int saldo = 0;
+    private String saltos="";
+
+    private String aux = "";
+    private String aux3 = "";
+    private char aux2=' ';
+    private boolean sal=false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.inicio_sesion);
 
         bluetoothIn = new Handler() {
             @SuppressLint("HandlerLeak")
             public void handleMessage(android.os.Message msg) {
                 if (msg.what == handlerState) {
-
-
 
                     aux2=(char) msg.obj;
 
@@ -82,122 +77,105 @@ public class MainActivity extends AppCompatActivity {
                         aux3="";
                         nick=false;
                         money=false;
-                        tanto=false;
-                        es=false;
-
+                        contra=false;
                     }
 
                     if(aux2 == '!')
                     {
-                        productoNombre="";
+                        usuario="";
                         nick=true;
-                    }
-
-                    if(aux2 == '$')
-                    {
-                        precio=0;
-                        money=true;
-                    }
-
-                    if(aux2 == '#')
-                    {
-                        cantidad=0;
-                        tanto=true;
                     }
 
                     if(aux2 == '@')
                     {
-                        descripcion="";
-                        es=true;
+                        clave="";
+                        contra=true;
                     }
 
-                    //System.out.print(aux2);
+                    if(aux2 == '$')
+                    {
+                        saldo=0;
+                        money=true;
+                    }
+
+                    if(aux2 == '*')
+                    {
+                        saltos="";
+                        sal=true;
+                    }
 
                     if(nick == true)
                     {
                         if(aux2 != '\n')
+                        {
+                            if(aux2 != '!')
                             {
-                                if(aux2 != '!')
-                                {
-                                    productoNombre = productoNombre.concat(Character.toString(aux2));
-                                    productoNombre = productoNombre.replaceAll("\\s+", "");
-                                    //System.out.println(producto.length());
-                                    //System.out.println(producto);
-                                }
-
+                                usuario = usuario.concat(Character.toString(aux2));
+                                usuario = usuario.replaceAll("\\s+", "");
+                                //System.out.println(producto.length());
+                                System.out.println(usuario);
                             }
+
+                        }
+
+                    }
+
+                    if(contra == true)
+                    {
+                        if(aux2 != '\n')
+                        {
+                            if(aux2 != '@')
+                            {
+                                clave = clave.concat(Character.toString(aux2));
+                                clave = clave.replaceAll("\\s+", "");
+                                //System.out.println(producto.length());
+                                System.out.println(clave);
+                            }
+
+                        }
 
                     }
 
                     if(money == true)
                     {
                         if(aux2 != '\n')
-                            {
-                                if(aux2 != '$')
-                                {
-                                    aux = aux.concat(Character.toString(aux2));
-                                    aux = aux.replaceAll("\\s+", "");
-                                    precio = Integer.parseInt(aux);
-                                    //System.out.println(aux.length());
-                                    //System.out.println(precio);
-                                }
-
-                            }
-
-                    }
-
-                    if(tanto == true)
-                    {
-                        if(aux2 != '\n')
                         {
-                            if(aux2 != '#' )
+                            if(aux2 != '$')
                             {
-                                if(aux2 != '$')
-                                {
-                                    aux3 = aux3.concat(Character.toString(aux2));
-                                    aux3 = aux3.replaceAll("\\s+", "");
-                                    cantidad = Integer.parseInt(aux3);
-                                    //System.out.println(aux.length());
-                                    //System.out.println(cantidad);
-
-                                }
-
-
+                                aux = aux.concat(Character.toString(aux2));
+                                aux = aux.replaceAll("\\s+", "");
+                                saldo = Integer.parseInt(aux);
+                                //System.out.println(aux.length());
+                                System.out.println(saldo);
                             }
 
                         }
 
                     }
 
-                    if(es == true)
+                    if(sal == true)
                     {
                         if(aux2 != '\n')
                         {
-                            if(aux2 != '@')
+                            if(aux2 != '*')
                             {
-                                descripcion = descripcion.concat(Character.toString(aux2));
-                                //descripcion = descripcion.replaceAll("\\s+", "");
-                                //System.out.println(producto.length());
-                                //System.out.println(producto);
+                                saltos = saltos.concat(Character.toString(aux2));
+                                saltos = saltos.replaceAll("\\s+", "");
+                                //System.out.println(aux.length());
+                                //System.out.println(saldo);
                             }
 
                         }
 
                     }
-
 
                     if(aux2=='%')
                     {
-                        Intent intend = new Intent(MainActivity.this, ProductoDetallado.class);
+                        Intent intend = new Intent(InicioSesion.this, MainActivity.class);
                         intend.putExtra(CUENTA_ENVIO,(usuario+";"+clave+";"+saldo+";"+saltos));
-                        intend.putExtra(PRODUCTO_ENVIO,(productoNombre+";"+precio+";"+cantidad+";"+descripcion));
                         intend.putExtra(EXTRA_DEVICE_ADDRESS, address);
                         startActivity(intend);
                     }
-
-
-                    //dato = dato.replaceAll("\\s+", "");
-
 
 
                 }
@@ -207,63 +185,40 @@ public class MainActivity extends AppCompatActivity {
 
         };
 
-
-
         btAdapter = BluetoothAdapter.getDefaultAdapter();
         VerificarEstadoBT();
 
-        ButtonAlmuercito = findViewById(R.id.ButtonAlmuercito);
-        ButtonChoquis = findViewById(R.id.ButtonChoquis);
-        ButtonQuimbayas = findViewById(R.id.ButtonQuimbayas);
-        ButtonJet = findViewById(R.id.ButtonJet);
-
-        textViewProductos = findViewById(R.id.textViewProductos);
-        textViewSaldo = findViewById(R.id.textViewSaldo);
-        FondoMenu = findViewById(R.id.FondoMenu);
+        buttonIngreso = findViewById(R.id.buttonIngreso);
+        buttonRegistro= findViewById(R.id.buttonRegistro);
+        editTextUsuario= findViewById(R.id.editTextUsuario);
+        editTextContra= findViewById(R.id.editTextContra);
 
 
-        ButtonAlmuercito.setOnClickListener(new View.OnClickListener() {
+        buttonIngreso.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                MyConexionBT.write("Almuercito.");
+                MyConexionBT.write("Usuario.");
+                String aux = String.valueOf(editTextUsuario.getText()+",")+String.valueOf(editTextContra.getText())+".";
+                MyConexionBT.write(aux);
 
                 //
 
             }
         });
 
-        ButtonChoquis.setOnClickListener(new View.OnClickListener() {
+        buttonRegistro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view)
             {
-                MyConexionBT.write("Choquis.");
 
-            }
-        });
-
-        ButtonQuimbayas.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                MyConexionBT.write("Quimbayas.");
-
-            }
-        });
-
-        ButtonJet.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                MyConexionBT.write("Jet.");
 
             }
         });
     }
-
-
 
     private BluetoothSocket createBluetoothSocket(BluetoothDevice device) throws IOException
     {
-        return device.createRfcommSocketToServiceRecord(BTMODULEUUID);
-    }
+        return device.createRfcommSocketToServiceRecord(BTMODULEUUID);    }
 
     @Override
     public void onResume()
@@ -271,25 +226,7 @@ public class MainActivity extends AppCompatActivity {
         super.onResume();
 
         Intent intent = getIntent();
-        cuenta = intent.getStringExtra(InicioSesion.CUENTA_ENVIO);
-        address = intent.getStringExtra(InicioSesion.EXTRA_DEVICE_ADDRESS);
-        if(address.length()<2)
-        {
-            address = intent.getStringExtra(ProductoDetallado.EXTRA_DEVICE_ADDRESS);
-        }
-        if(cuenta.length()<2)
-        {
-            cuenta = intent.getStringExtra(ProductoDetallado.CUENTA_ENVIO);
-        }
-
-        StringTokenizer separador = new StringTokenizer(cuenta, ";");
-        usuario = separador.nextToken();
-        clave =  separador.nextToken();
-        saldo = "$"+separador.nextToken();
-        saltos =  separador.nextToken();
-
-        textViewSaldo.setText(saldo);
-
+        address = intent.getStringExtra(DispositivosVinculados.EXTRA_DEVICE_ADDRESS);
         //Setea la direccion MAC
         BluetoothDevice device = btAdapter.getRemoteDevice(address);
 
@@ -383,6 +320,4 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
-
-
 }
